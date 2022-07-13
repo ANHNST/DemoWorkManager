@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             .putString(FileParams.KEY_FILE_TYPE, fileMimeType)
             .build()
         val constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
-        val request = OneTimeWorkRequest.Builder(TestOneTimeWorker::class.java).setInputData(inputData)
+        val request = OneTimeWorkRequest.Builder(DownloadFileWorker::class.java).setInputData(inputData)
             .setConstraints(constraints).addTag(Constant.DOWNLOAD_TAG).build()
 
         workManager?.enqueueUniqueWork("just download", ExistingWorkPolicy.KEEP, request)
